@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Agendamento</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+Beleza Premium
+</div>
+
+<nav>
+
+<a href="index.html">Início</a>
+<a href="catalogo.html">Catálogo</a>
+<a href="agendamento.html">Agendar</a>
+
+</nav>
+
+</header>
+
+<section class="agenda-hero">
+
+<h1>Agendar Horário</h1>
+
+<p>
+Escolha seu serviço e reserve seu atendimento.
+</p>
+
+</section>
+
+<section class="agenda-container">
+
+<form id="formAgendamento">
+
+<div class="campo">
+
+<label>Nome</label>
+
+<input
+type="text"
+id="nome"
+required>
+
+</div>
+
+<div class="campo">
+
+<label>WhatsApp</label>
+
+<input
+type="tel"
+id="telefone"
+required>
+
+</div>
+
+<div class="campo">
+
+<label>Serviço</label>
+
+<select id="servico">
+
+<option>Corte Feminino</option>
+
+<option>Escova</option>
+
+<option>Coloração</option>
+
+<option>Hidratação</option>
+
+</select>
+
+</div>
+
+<div class="campo">
+
+<label>Profissional</label>
+
+<select id="profissional">
+
+<option>Amanda</option>
+
+<option>Fernanda</option>
+
+<option>Juliana</option>
+
+</select>
+
+</div>
+
+<div class="campo">
+
+<label>Data</label>
+
+<input
+type="date"
+id="data"
+required>
+
+</div>
+
+<label class="titulo-horarios">
+
+Horários Disponíveis
+
+</label>
+
+<div class="horarios">
+
+<button type="button" class="hora">09:00</button>
+<button type="button" class="hora">10:00</button>
+<button type="button" class="hora">11:00</button>
+<button type="button" class="hora">14:00</button>
+<button type="button" class="hora">15:00</button>
+<button type="button" class="hora">16:00</button>
+
+</div>
+
+<input
+type="hidden"
+id="horario">
+
+<div class="campo">
+
+<label>Observações</label>
+
+<textarea
+id="obs"
+rows="5"></textarea>
+
+</div>
+
+<button
+type="submit"
+class="btn-agendar">
+
+Confirmar Agendamento
+
+</button>
+
+</form>
+
+</section>
+
+<script>
+
+let horario = '';
+
+document
+.querySelectorAll('.hora')
+.forEach(botao => {
+
+botao.addEventListener('click',()=>{
+
+document
+.querySelectorAll('.hora')
+.forEach(h=>h.classList.remove('ativo'));
+
+botao.classList.add('ativo');
+
+horario = botao.innerText;
+
+});
+
+});
+
+document
+.getElementById('formAgendamento')
+.addEventListener('submit',function(e){
+
+e.preventDefault();
+
+const nome =
+document.getElementById('nome').value;
+
+const telefone =
+document.getElementById('telefone').value;
+
+const servico =
+document.getElementById('servico').value;
+
+const profissional =
+document.getElementById('profissional').value;
+
+const data =
+document.getElementById('data').value;
+
+const obs =
+document.getElementById('obs').value;
+
+const msg =
+`Olá! Gostaria de agendar um horário.%0A%0ACliente: ${nome}%0AWhatsApp: ${telefone}%0AServiço: ${servico}%0AProfissional: ${profissional}%0AData: ${data}%0AHorário: ${horario}%0AObservações: ${obs}`;
+
+window.open(
+`https://wa.me/5564999999999?text=${msg}`,
+'_blank'
+);
+
+});
+
+</script>
+
+</body>
+</html>
